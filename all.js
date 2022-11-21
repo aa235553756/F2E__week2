@@ -16,6 +16,10 @@ $(function(){
     // }
 })
 
+$('#createSign').on('click',function(){
+  $('#signOffcanvas').toggleClass('!hidden')
+})
+
 //簽名
 const signCanvas = document.querySelector("#signCanvas");
 console.log(signCanvas);
@@ -98,7 +102,10 @@ function saveImage() {
     // showImage.src = newImg;
   }
   
-$('#saveCanvasButton').on("click", saveImage);
+$('#saveCanvasButton').on("click", function(){
+  saveImage()
+  $('#signOffcanvas').toggleClass('!hidden')
+});
 
 
 // console.log(fabric);
