@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-light-main md:flex items-center fixed w-full top-0 md:relative z-10">
+        <div class="h-[30px] md:h-[60px] container bg-light-main px-4 flex items-center justify-between">
+            <h1><a href="index.html"><img class="h-[15px] md:h-[25px]" src="./dist/images/LOGO 2-sm.svg" alt=""></a></h1>
+            <button id="navbar-expand-button" class="md:hidden group"><span><svg class="" width="24" height="24"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span></button>
+        </div>
+        <ul id="navbar-expand" class="bg-light-main md:px-4 md:flex hidden text-center flex-shrink-0 md:space-x-[30px] text-secondary">
+            <div id="navbar-offcanvas" class="bg-black top-0 -z-10 opacity-50 fixed hidden h-screen w-full"></div>
+            <li class="h-[30px]"><button href="#" class="disabled:text-[#E2E1DD]" disabled>邀請他人簽署</button></li>
+            <li class="h-[30px]"><button href="#">簽署新文件</button></li>
+            <li class="h-[30px]"><a href="#">登入</a></li>
+        </ul>
+    </nav>
+
+    <main id="fileSave" class="bg-gray-100 md:h-[calc(100vh-160px)] mt-[30px] md:mt-0 h-[calc(100vh-130px)] flex flex-col justify-center">
+        <section class="container px-4 flex-grow py-[30px] flex flex-col">
+            <div class="flex bg-light-main rounded-[35px]">
+                <button class="tab text-xs md:text-xl rounded-t-[35px] py-4  tab-active bg-light-main text-secondary w-full block">上傳新文件</button>
+                <button class="tab text-xs md:text-xl rounded-t-[35px] py-4 text-secondary w-full bg-light-main block">選擇已上傳文件</button>
+            </div>
+            <div class="tab-content bg-white md:p-[50px] p-[10px] flex-grow rounded-b-[35px]">
+                <div class="border border-dark-gray hover:bg-[#EEEDE8] border-dashed rounded-[35px] h-full">
+                    <label for="upload" class="group md:text-xl text-xs flex cursor-pointer h-full md:space-y-10 space-y-5 flex-col justify-center items-center">
+                        <p class="text-dark-gray">點擊此處上傳<span class="hidden md:inline-block"> 或 直接拖曳檔案</span></p>
+                        <img src="./dist/images/carbon_document-pdf.svg" alt="" width="144px" height="144px">
+                        <p class="text-dark-gray">(限10MB以下PDF檔)</p>
+                    </label>
+                    <input class="hidden" id="upload" type="file" accept="application/pdf">
+                </div>
+            </div>
+            <div class="hidden space-y- tab-content overflow-y-scroll h-[1px] bg-white px-[35px] py-[50px] flex-grow rounded-b-[35px]">
+                <li class="fileItem flex justify-center text-xl px-[30px] py-[18px] rounded-[35px]">
+                    <p class="text-secondary text-xs md:text-base">此區域尚未完成</p>
+                </li>
+                <li class="fileItem flex justify-center text-xl px-[30px] py-[18px] rounded-[35px]">
+                    <p class="font-bold text-secondary text-xs md:text-base">上傳文件後 點擊開啟文件</p>
+                </li>
+                <!-- <label for="search" class="py-4 px-8 flex justify-between border border-[#A5A39C] rounded-[35px]">
+                    <input id="search" type="text" placeholder="搜尋文件名稱" class="text-black text-xl w-full outline-0">
+                    <img src="./dist/images/search.svg" alt="search-icon">
+                </label>
+                <ul id="fileList" class="py-[30px] text-[#A5A39C]">
+                    <li class="flex px-[30px] py-[18px]">
+                        <p class="w-1/2">名稱</p>
+                        <p class="w-1/2">上傳時間</p>
+                    </li>
+                    <li class="fileItem !hidden flex text-xl px-[30px] py-[18px] bg-light-main rounded-[35px] cursor-pointer">
+                        <p class="w-1/2">預設名稱</p>
+                        <p class="w-1/2">2021/11/23</p>
+                    </li>
+                </ul> -->
+            </div>
+        </section>
+    </main>
+
+    <div id="file-offcanvas" class="!hidden flex fixed top-0 bg-[rgba(0,0,0,0.5)] w-full h-screen justify-center items-center">
+        <div class="bg-wihte flex flex-col items-end justify-end relative rounded-[35px] max-w-[830px] w-[830px] mx-[10px] md:h-[297px] h-[154px] bg-white">
+            <p class="text-dark-gray absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">您的檔案太大了</p>
+            <button id="file-offcanvas-close" class="btn btn-secondary mb-[10px] mr-[10px]">我知道了</button>
+        </div>
+    </div>
+
+    <main id="canvasBlock" class="!hidden h-[calc(100vh-130px)] mt-[30px] md:mt-[0px] md:h-[calc(100vh-160px)] flex flex-col md:flex-row">
+        <div class="md:hidden bg-white h-[30px] md:h-full md:w-1/3 flex md:flex-col items-center overflow-x-scrol shadow-CreateName md:shadow-none">
+            <p id="mobileEditName" class="px-5 text-xs md:text-xl text-dark-gray whitespace-nowrap md:whitespace-normal">六角學院2022版活動切結書.pdfdasdasdasddasd六角學院2022版活動切結書.pdfdasdasdasddasd</p>
+        </div>
+        <div class="max-w-[400px] hidden md:block">
+            <div class="px-9 py-4 text-dark-gray border-b border-b-[#EEEDE8]">
+                <h5 class="font-bold mb-4">文件名稱</h5>
+                <p class="whitespace-nowrap overflow-x-scroll py-2">六角學院2022版活動切結書.pdf</p>
+            </div>
+            <div class="px-9 py-6 text-dark-gray">
+                <h5 class="font-bold mb-4">我的簽名 (直接拖曳使用)</h5>
+                <div class="space-y-4">
+                    <button id="createSign" class="h-[60px] flex border border-dashed border-dark-gray w-full justify-center items-center">創建簽名<span class="ml-[5px]"><img src="./dist/images/paint.svg" alt=""></span></button>
+                    <button class="h-[60px] flex border border-dashed border-dark-gray w-full justify-center items-center">上傳圖片<span class="ml-[5px]"><img src="./dist/images/imgIcon.svg" alt=""></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-lime-100 flex-grow w-full overflow-scroll z-0 flex justify-center">
+            <!-- <h1>我是canvas</h1> -->
+            <canvas id="canvas" class="border border-black"></canvas>
+        </div>
+        <div class="!hidden flex shadow-CreatePaint">
+            <button class="text-dark-gray text-xs flex justify-center items-center h-[30px] w-1/2">創建簽名<span class="ml-[5px]"><img src="./dist/images/paint.svg" alt=""></span></button>
+            <button class="text-dark-gray text-xs flex justify-center items-center h-[30px] w-1/2">創建簽名<span class="ml-[5px]"><img src="./dist/images/imgIcon.svg" alt=""></span></button>
+        </div>
+    </main>
+
+    <div id="signOffcanvas" class=" z-10 fixed flex justify-center items-center top-0 h-screen w-full bg-[rgba(0,0,0,0.5)]">
+        <div class="bg-white rounded-[35px] pt-[30px] pb-[20px] px-6">
+            <h5 class="text-xl tracking-[20%] text-dark-gray mb-[30px] text-center">在框格內簽署大名!</h5>
+            <div class="md:w-[779px] w-[280px] md:h-[360px] h-[130px]  mb-5 border border-dashed border-dark-gray">
+                <canvas id="signCanvas" width="779px" height="360px"></canvas>
+            </div>
+            <div class="flex justify-between items-center">
+                <button class="clear text-xl text-secondary">清除</button>
+                <div class="flex space-x-4">
+                    <button class="block btn btn-white">取消</button>
+                    <button id="saveCanvasButton" class="block btn btn-secondary">簽好了</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light-main">
+        <div class="container px-4 h-[100px] flex flex-col md:flex-row justify-between items-center">
+            <ul class="opacity-0 border-b-[#EEEDE8] w-full md:w-auto h-[68px] md:h-auto flex text-secondary space-x-1 bg-lime-100 flex-shrink-0">
+                <li>上傳文件</li>
+                <li class="text-primary">上傳文件</li>
+                <li>上傳文件</li>
+            </ul>
+            <div class="flex w-full justify-end md:space-x-4 space-x-3">
+                <button id="canvasPagenCancel" class="block btn btn-white btn--disabled" disabled>取消</button>
+                <button id="canvasPageButton" class="block btn btn-secondary btn-secondary--hover">開啟文件</button>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- pdf -->
+    <script src="https://unpkg.com/fabric@latest/dist/fabric.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <!-- <script src="./pdf.js"></script> -->
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="all.js"></script>
+</body>
+</html>

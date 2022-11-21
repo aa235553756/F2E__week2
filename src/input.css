@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* *,*::after,*::before{
+    outline: 1px solid;
+} */
+
+
+@layer utilities{
+    .btn{
+        @apply w-[80px] md:w-[180px] h-[30px] md:h-auto text-xs text-center md:py-4 py-0 md:px-11 text-secondary rounded-[35px] shadow-btn
+    }
+    .btn-white{
+        @apply w-[80px] md:w-[180px]  text-xs text-center md:py-4 py-0 md:px-11 text-secondary rounded-[35px] shadow-btn
+    }
+    .btn-secondary{
+        @apply w-[80px] md:w-[180px] text-xs text-center md:py-4 py-0 md:px-11 text-white bg-secondary rounded-[35px] shadow-btn
+    }
+    .btn-secondary--hover{
+        @apply hover:bg-primary
+    }
+    .btn--disabled{
+        @apply opacity-40
+    }
+    .svg-primary{
+        filter: invert(18%) sepia(82%) saturate(256%) hue-rotate(346deg) brightness(108%) contrast(95%);
+    }
+    .tab-active{
+        @apply !bg-white !text-primary
+    }
+}
