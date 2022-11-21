@@ -97,27 +97,24 @@ clearBtn.addEventListener("click", reset);
 //儲存圖片
 function saveImage() {
     // 圖片儲存的類型選擇 png ，並將值放入 img 的 src
-    const newImg = canvas.toDataURL("image/png");
+    const newImg = signCanvas.toDataURL("image/png");
     localStorage.setItem('sign0',newImg)
     // showImage.src = newImg;
   }
   
 $('#saveCanvasButton').on("click", function(){
   saveImage()
-  $('#signOffcanvas').toggleClass('!hidden')
-});
+  $('#signOffcanvas').toggleClass('!hidden');
 
-
-// console.log(fabric);
-fabric.Image.fromURL(localStorage.getItem('sign0'), function (image) {
-
+  fabric.Image.fromURL(localStorage.getItem('sign0'), function (image) {
     // 設定簽名出現的位置及大小，後續可調整
     image.top = 400;
-        image.scaleX = 0.5;
+    image.scaleX = 0.5;
     image.scaleY = 0.5;
     canvas.add(image);
+  });
+  
 });
-
 
 //導覽列按鈕
 $('#navbar-expand-button').on('click',function(){
